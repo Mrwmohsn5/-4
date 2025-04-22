@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>تسجيل حساب جديد</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .password-container {
+      position: relative;
+    }
+    .toggle-eye-img {
+      position: absolute;
+      left: 10px;
+      top: 40%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      width: 22px;
+      height: 22px;
+      opacity: 0.6;
+    }
+    .toggle-eye-img:hover {
+      opacity: 1;
+    }
+
+    video {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Popup styles */
+    #popup {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      background: #fff;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      max-width: 400px;
+    }
+
+    #popup .close-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 20px;
+      background: none;
+      border: none;
+      color: #888;
+      cursor: pointer;
+    }
+
+    #popup .close-btn:hover {
+      color: #e74c3c;
+    }
+  </style>
+  <script>
+    function togglePassword(fieldId, iconId) {
+      const input = document.getElementById(fieldId);
+      const icon = document.getElementById(iconId);
+      const isHidden = input.type === "password";
+
+      input.type = isHidden ? "text" : "password";
+      icon.src = isHidden ? "view.png" : "hide.png";
+    }
+
+    function validateForm() {
+      const username = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+
+      const usernameRegex = /^[^0-9]+$/;
+      const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-_]).{8,}$/;
+
+      if (!usernameRegex.test(username)) {
+        alert("الاسم الكامل يجب ألا يحتوي على أرقام.");
+        return false;
+      }
+
+      if (!passwordRegex.test(pass)) {
+        alert("كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل، حرف كبير، رقم، ورمز خاص.");
+        return false;
+      }
+
+      if (pass !== confirm) {
+        alert("تأكيد كلمة المرور غير مطابق.");
+        return false;
+      }
+
+      document.querySelector("form").style.display = "none";
+      document.getElementById("popup").style.display = "block";
+      return false;
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      document.querySelector("form").style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">OHI</h1>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="contact.html">من نحن</a>
+      <a href="goals.html">أهداف التنمية</a>
+      <a href="action.html">بادر بالفعل</a>
+      <a href="stories.html">قصص</a>
+      <a href="history.html">تاريخنا</a>
+      <a href="media.html">المركز الإعلامي</a>
+    </nav>
+    <div>
+      <a href="login.html" class="btn">دخول</a>
+      <a href="register.html" class="btn secondary">تسجيل</a>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <h2>تسجيل حساب جديد</h2>
+    <form onsubmit="return validateForm()">
+      <label for="username">الاسم الكامل:</label>
+      <input type="text" id="username" required />
+      
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" required />
+      
+      <label for="password">كلمة المرور:</label>
+      <div class="password-container">
+        <input type="password" id="password" required />
+        <img src="hide.png" alt="عرض" id="eye1" class="toggle-eye-img" onclick="togglePassword('password', 'eye1')" />
+      </div>
+      <small style="color: gray;">* يجب أن تحتوي على 8 أحرف على الأقل، حرف كبير، رقم، ورمز مثل ! أو @ أو #</small><br>
+      
+      <label for="confirm">تأكيد كلمة المرور:</label>
+      <div class="password-container">
+        <input type="password" id="confirm" required />
+        <img src="hide.png" alt="عرض" id="eye2" class="toggle-eye-img" onclick="togglePassword('confirm', 'eye2')" />
+      </div>
+      
+      <button type="submit" class="btn">تسجيل</button>
+    </form>
+
+    <!-- ✅ شاشة النجاح مع زر إغلاق وفيديو -->
+    <div id="popup">
+      <button class="close-btn" onclick="closePopup()">✖</button>
+      <video autoplay muted loop playsinline>
+        <source src="WhatsApp Video 2025-04-20 at 23.28.56_1a988a56.mp4" type="video/mp4">
+        المتصفح لا يدعم تشغيل الفيديو.
+      </video>
+      <h3>تم التسجيل بنجاح!</h3>
+      <button onclick="window.location.href='index.html'" class="btn">العودة إلى الصفحة الرئيسية</button>
+    </div>
+  </div>
+</body>
+</html>

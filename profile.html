@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>الملف الشخصي</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .profile-container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .profile-container img {
+      border-radius: 50%;
+      width: 150px;
+      margin-bottom: 20px;
+    }
+    .logout-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .logout-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container" id="profile">
+    <img id="avatar" src="" alt="صورة المستخدم" />
+    <h2 id="name"></h2>
+    <p id="email"></p>
+    <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    if (!user) {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("avatar").src = user.avatar;
+      document.getElementById("name").textContent = user.username;
+      document.getElementById("email").textContent = user.email;
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedUser");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

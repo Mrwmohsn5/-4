@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل الدخول</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .password-container {
+      position: relative;
+    }
+    .toggle-eye-img {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      opacity: 0.6;
+    }
+    .toggle-eye-img:hover {
+      opacity: 1;
+    }
+  </style>
+  <script>
+    const users = [
+      {
+        username: "أحمد خالد",
+        email: "ahmad@example.com",
+        password: "Ahmad@123",
+        avatar: "https://i.pravatar.cc/150?img=12"
+      },
+      {
+        username: "سارة محمود",
+        email: "sara@example.com",
+        password: "Sara@456",
+        avatar: "https://i.pravatar.cc/150?img=47"
+      }
+    ];
+
+    function loginUser(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        localStorage.setItem("loggedUser", JSON.stringify(user));
+        window.location.href = "profile.html";
+      } else {
+        alert("بيانات الدخول غير صحيحة.");
+      }
+    }
+
+    function togglePassword(id, iconId) {
+      const input = document.getElementById(id);
+      const icon = document.getElementById(iconId);
+      const isHidden = input.type === "password";
+
+      input.type = isHidden ? "text" : "password";
+      icon.src = isHidden ? "view.png" : "hide.png";
+    }
+  </script>
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">OHI</h1>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="contact.html">من نحن</a>
+      <a href="goals.html">أهداف التنمية</a>
+      <a href="action.html">بادر بالفعل</a>
+      <a href="stories.html">قصص</a>
+      <a href="history.html">تاريخنا</a>
+      <a href="media.html">المركز الإعلامي</a>
+    </nav>
+    <div>
+      <a href="login.html" class="btn">دخول</a>
+      <a href="register.html" class="btn secondary">تسجيل</a>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <h2>تسجيل الدخول</h2>
+    <form onsubmit="loginUser(event)">
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" required />
+      
+      <label for="password">كلمة المرور:</label>
+      <div class="password-container">
+        <input type="password" id="password" required />
+        <img src="hide.png" alt="عرض" id="eye-login" class="toggle-eye-img" onclick="togglePassword('password', 'eye-login')" />
+      </div>
+
+      <button type="submit" class="btn">دخول</button>
+    </form>
+  </div>
+</body>
+</html>

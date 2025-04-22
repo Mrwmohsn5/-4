@@ -1,0 +1,149 @@
+
+body {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  background: #f9fbfd;
+  color: #333;
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: linear-gradient(to left, #0f2027, #203a43, #2c5364);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.navbar nav a {
+  margin: 0 10px;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #ddd;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.btn {
+  padding: 8px 16px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #0198a6;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  border: 2px solid #00bcd4;
+  color: #00bcd4;
+}
+
+.hero {
+  padding: 60px 20px;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  color: black;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #555;
+}
+
+.content {
+  padding: 40px 20px;
+  background-color: #fff;
+  max-width: 960px;
+  margin: auto;
+}
+
+.content h3, .auth-container h2 {
+  font-size: 26px;
+  color: #00796b;
+  margin-bottom: 15px;
+}
+
+.content p, .auth-container p, .auth-container li {
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.content ul, .auth-container ul, .auth-container ol {
+  margin: 15px 0;
+  padding-right: 20px;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 25px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.auth-container {
+  max-width: 700px;
+  background: white;
+  padding: 30px;
+  margin: 50px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+form button.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .navbar nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
