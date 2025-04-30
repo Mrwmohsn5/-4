@@ -122,7 +122,11 @@
       <a href="register.html" class="btn secondary">تسجيل</a>
     </div>
   </header>
-<div id="g_id_onload"
+
+  <div class="auth-container">
+    <h2>تسجيل حساب جديد</h2>
+    <form onsubmit="return validateForm()">
+      <div id="g_id_onload"
      data-client_id="1059676939994-2kq0n2sibl3d6qng5e8al75e9n8dcuqd.apps.googleusercontent.com"
      data-context="signin"
      data-ux_mode="popup"
@@ -139,9 +143,6 @@
      data-size="large"
      data-logo_alignment="left">
 </div>
-  <div class="auth-container">
-    <h2>تسجيل حساب جديد</h2>
-    <form onsubmit="return validateForm()">
       <label for="username">الاسم الكامل:</label>
       <input type="text" id="username" required />
       
@@ -176,6 +177,5 @@
     </div>
   </div>
   <script src="https://accounts.google.com/gsi/client" async></script>
-
 </body>
 </html>
