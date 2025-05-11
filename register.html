@@ -185,9 +185,10 @@
      data-logo_alignment="left">
 </div>
   <script src="https://accounts.google.com/gsi/client" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@4.0.0/build/cjs/index.min.js"></script>
   <script> 
   function logincallback(response){
-    console.log(response) 
+    console.log(jwt_decode(response.credential))
   }
   </script>
 </body>
